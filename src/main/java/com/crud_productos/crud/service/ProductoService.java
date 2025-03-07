@@ -5,7 +5,6 @@ import com.crud_productos.crud.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,8 +13,9 @@ public class ProductoService implements IProductoService{
     @Autowired
     private IProductoRepository repoProduct;
     @Override
-    public void crearProducto(Producto prod) {
+    public Producto crearProducto(Producto prod) {
         repoProduct.save(prod);
+        return prod;
     }
 
     @Override

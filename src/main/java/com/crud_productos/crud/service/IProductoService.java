@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IProductoService {
     //alta
-    public void crearProducto(Producto prod);
+    public Producto crearProducto(Producto prod);
 
 
     //lectura
