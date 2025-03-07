@@ -3,6 +3,8 @@ package com.crud_productos.crud.controller;
 import com.crud_productos.crud.model.Producto;
 import com.crud_productos.crud.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,11 +15,10 @@ public class ProductoController {
 
     private IProductoService prodServ;
     @PostMapping("/productos/crear")
-    public String crearProducto(@RequestBody Producto prod){
-        prodServ.crearProducto(prod);
-        return "el producto fue creado con exito";
+    public ResponseEntity<Producto> crearProducto(@RequestBody Producto prod) {
+        Producto productoGuardado = prodServ.crearProducto(prod);
+        return new ResponseEntity<>(productoGuardado, HttpStatus.CREATED);
     }
-
     @GetMapping("/productos")
     public List<Producto> traerProductos(){
         return prodServ.traerProductos();
